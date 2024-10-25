@@ -1,0 +1,63 @@
+# Projet DBT - Analyse des Ventes
+
+## Aperçu
+Ce projet dbt transforme les données brutes de ventes en modèles analytiques centrés sur les performances journalières et les comportements d'achat des clients.
+
+## Sources de Données
+
+### TRANSACTIONS
+Données transactionnelles contenant :
+- `date` : Date de la commande
+- `order_id` : Identifiant de commande
+- `client_id` : Identifiant client
+- `prod_id` : Identifiant produit
+- `prod_price` : Prix unitaire
+- `prod_qty` : Quantité commandée
+
+### PRODUCT_NOMENCLATURE
+Référentiel produits contenant :
+- `product_id` : Identifiant produit
+- `product_type` : Type de produit (DECO ou MEUBLE)
+- `product_name` : Nom du produit
+
+## Modèles
+
+### 1. ventes_journaliers
+Agrégations des ventes quotidiennes pour l'année 2019
+- Calcul du chiffre d'affaires quotidien
+
+
+### 2. ventes_clients_and_type
+Analyse des ventes par client et type de produit
+- Quantités vendues
+
+
+## Installation et Utilisation
+
+1. Configuration de la connexion dans `~/.dbt/profiles.yml`
+2. Installation :
+```bash
+dbt deps
+```
+
+3. Exécution des modèles :
+```bash
+dbt run
+```
+
+4. Tests :
+```bash
+dbt test
+```
+
+## Tests Inclus
+- Unicité des identifiants
+- Tests de non-nullité
+- Validation des types de produits
+
+## Documentation
+Pour générer la documentation :
+```bash
+dbt docs generate
+dbt docs serve
+```
