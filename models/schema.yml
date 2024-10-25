@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: ventes_journaliers
+    description: "Daily sales aggregations"
+    columns:
+      - name: date
+        description: "Sale date"
+        tests:
+          - not_null
+          - unique
+      - name: total_ventes
+        description: "Total daily sales amount"
+      - name: nb_transactions
+        description: "Number of transactions"
+      - name: nb_products
+        description: "Number of products sold"
+      - name: avg_basket
+        description: "Average basket value"
+
+  - name: ventes_clients_and_type
+    description: "Sales by customer and product type"
+    columns:
+      - name: client_id
+        description: "Customer ID"
+        tests:
+          - not_null
+      - name: product_type
+        description: "Product type (DECO or MEUBLE)"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['DECO', 'MEUBLE']
+      - name: total_amount
+        description: "Total sales amount"
+      - name: total_quantity
+        description: "Total quantity sold"
+      - name: nb_orders
+        description: "Number of orders"

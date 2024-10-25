@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw sales data"
+    tables:
+      - name: transactions
+        description: "Raw sales transactions"
+        columns:
+          - name: date
+            description: "Order date"
+          - name: order_id
+            description: "Unique order identifier"
+            tests:
+              - unique
+              - not_null
+          - name: client_id
+            description: "Customer ID"
+          - name: prod_id
+            description: "Product ID"
+          - name: prod_price
+            description: "Unit price"
+          - name: prod_qty
+            description: "Quantity ordered"
+
+      - name: product_nomenclature
+        description: "Product reference data"
+        columns:
+          - name: product_id
+            description: "Unique product identifier"
+            tests:
+              - unique
+              - not_null
+          - name: product_type
+            description: "Product type (DECO or MEUBLE)"
+          - name: product_name
+            description: "Product name"
